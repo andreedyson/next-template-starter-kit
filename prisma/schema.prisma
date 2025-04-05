@@ -15,14 +15,14 @@ enum SystemRole {
 }
 
 model User {
-  id        String    @id @default(cuid())
+  id        String     @id @default(cuid())
   name      String?
-  email     String    @unique
+  email     String     @unique
   password  String?
-  role      String    @default("USER")
+  role      SystemRole @default(USER)
   image     String?
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
   Session   Session[]
 }
 
