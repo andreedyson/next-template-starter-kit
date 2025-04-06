@@ -5,7 +5,14 @@ import { Input } from "@/components/ui/input";
 import { BASE_URL } from "@/constants";
 import { registerSchema } from "@/types/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Eye, EyeOff, Lock, Mail, UserRound } from "lucide-react";
+import {
+  Eye,
+  EyeOff,
+  GalleryVerticalEnd,
+  Lock,
+  Mail,
+  UserRound,
+} from "lucide-react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -88,6 +95,12 @@ export function RegisterForm() {
           className="flex flex-col gap-4"
         >
           <section className="mb-2 text-center md:text-start">
+            <Link href="/" className="mb-3 flex items-center gap-2 font-medium">
+              <div className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-md">
+                <GalleryVerticalEnd className="size-4" />
+              </div>
+              StartDash
+            </Link>
             <h2 className="text-xl font-bold md:text-2xl">
               Create an account 📦
             </h2>
@@ -169,7 +182,7 @@ export function RegisterForm() {
           <Button type="submit" disabled={submitting} className="mt-2 w-full">
             {submitting ? "Registering..." : "Register"}
           </Button>
-          <Link href={"/signin"} className="mt-2 text-center text-sm">
+          <Link href={"/sign-in"} className="mt-2 text-center text-sm">
             Already have an account?{" "}
             <span className="text-main-500 font-semibold underline">
               Sign In
