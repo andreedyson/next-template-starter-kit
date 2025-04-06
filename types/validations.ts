@@ -14,3 +14,8 @@ export const registerSchema = z.object({
     .max(32, { message: "Password should be less than 32 characters" }),
   image: z.string().url().optional(),
 });
+
+export const signInSchema = registerSchema.pick({
+  email: true,
+  password: true,
+});

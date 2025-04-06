@@ -2,22 +2,15 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { BASE_URL } from "@/constants";
-import { registerSchema } from "@/types/validations";
+import { signInSchema } from "@/types/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Eye,
-  EyeOff,
-  GalleryVerticalEnd,
-  Lock,
-  Mail,
-  UserRound,
-} from "lucide-react";
-import { useSession } from "next-auth/react";
+import { Eye, EyeOff, GalleryVerticalEnd, Lock, Mail } from "lucide-react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { z } from "zod";
 import {
   Form,
@@ -27,59 +20,47 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import toast from "react-hot-toast";
+import Image from "next/image";
 
-export function RegisterForm() {
+export function SignInForm() {
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const router = useRouter();
   const session = useSession();
 
-  const form = useForm<z.infer<typeof registerSchema>>({
-    resolver: zodResolver(registerSchema),
+  const form = useForm<z.infer<typeof signInSchema>>({
+    resolver: zodResolver(signInSchema),
     defaultValues: {
-      name: "",
       email: "",
       password: "",
     },
   });
 
   useEffect(() => {
-    console.log(session.status);
     if (session.status === "authenticated") {
       router.replace("/");
     }
   }, [session, router]);
 
-  async function onSubmit(values: z.infer<typeof registerSchema>) {
+  async function onSubmit(values: z.infer<typeof signInSchema>) {
     setSubmitting(true);
 
     try {
-      const res = await fetch(`${BASE_URL}/api/auth/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: values.name,
-          email: values.email,
-          password: values.password,
-        }),
+      const res = await signIn("credentials", {
+        email: values.email,
+        password: values.password,
+        redirect: false,
       });
 
-      const data = await res.json();
-
-      console.log(data);
-
-      if (!res.ok) {
+      if (!res?.ok) {
         setSubmitting(false);
-
-        toast.error(data.message);
+        toast.error("Invalid credentials provided 🚫");
+        setSubmitting(false);
       } else {
         setSubmitting(false);
-        toast.success(data.message);
-        form.reset();
-        router.push("/sign-in");
+        toast.success("Login Successful 🌟");
+        router.refresh();
+        router.replace("/dashboard");
       }
     } catch (error) {
       console.error("Registration error:", error);
@@ -96,44 +77,21 @@ export function RegisterForm() {
           className="flex flex-col gap-4"
         >
           <section className="mb-2 text-center md:text-start">
-            <Link href="/" className="mb-3 flex items-center gap-2 font-medium">
+            <Link href="/" className="flex items-center gap-2 font-medium">
               <div className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-md">
                 <GalleryVerticalEnd className="size-4" />
               </div>
               StartDash
             </Link>
             <p className="mt-2.5 mb-3 text-sm font-bold tracking-wide uppercase">
-              Register
+              Sign In
             </p>
-            <h2 className="text-xl font-bold md:text-2xl">
-              Create an account 📦
-            </h2>
+            <h2 className="text-xl font-bold md:text-2xl">Welcome Back 🙋‍♂️</h2>
             <p className="text-muted-foreground text-sm md:text-base">
-              Fill out the form below to create your account and start managing
-              your dashboard with ease.
+              Fill out the form below to securely access your dashboard and
+              continue with ease.
             </p>
           </section>
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <div className="border-input flex items-center justify-center rounded-md border dark:bg-zinc-700">
-                  <UserRound size={24} className="mx-2" />
-                  <FormControl>
-                    <Input
-                      placeholder="ex: Andre Edyson"
-                      {...field}
-                      autoComplete="off"
-                      className="rounded-l-none"
-                    />
-                  </FormControl>
-                </div>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
           <FormField
             control={form.control}
             name="email"
@@ -183,16 +141,43 @@ export function RegisterForm() {
               </FormItem>
             )}
           />
+
           <Button type="submit" disabled={submitting} className="mt-2 w-full">
-            {submitting ? "Registering..." : "Register"}
+            {submitting ? "Signing In..." : "Sign In"}
           </Button>
-          <Link href={"/sign-in"} className="mt-2 text-center text-sm">
-            Already have an account?{" "}
+
+          <div className="my-1 flex items-center gap-4">
+            <div className="bg-primary/20 dark:bg-primary-foreground/80 h-0.5 w-1/2" />
+            <div>OR</div>
+            <div className="bg-primary/20 dark:bg-primary-foreground/80 h-0.5 w-1/2" />
+          </div>
+
+          {/* Google SignIn Button */}
+          <div>
+            <Button
+              className="w-full cursor-pointer bg-zinc-700 text-white hover:bg-zinc-500"
+              onClick={(e) => {
+                e.preventDefault();
+                signIn("google");
+              }}
+            >
+              <Image
+                src={"/assets/google.svg"}
+                width={1000}
+                height={1000}
+                alt="Google"
+                className="mr-2 size-4"
+              />
+              Sign In with Google
+            </Button>
+          </div>
+          <Link href={"/register"} className="mt-2 text-center text-sm">
+            Don&apos;t have an account?{" "}
             <span className="text-main-500 font-semibold underline">
-              Sign In
+              Register
             </span>
           </Link>
-          <div className="desc-2 mt-3 text-center text-sm md:mt-12 md:text-start">
+          <div className="mt-3 text-center text-sm md:mt-10 md:text-start">
             <p>© 2025 StartDash</p>
           </div>
         </form>
