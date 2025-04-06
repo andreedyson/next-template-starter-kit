@@ -37,8 +37,18 @@ export function SignInForm() {
   });
 
   useEffect(() => {
-    if (session.status === "authenticated") {
+    const isAutheticated = session.status === "authenticated";
+    const systemRole = session.data?.user.role;
+
+    if (isAutheticated && systemRole == "USER") {
       router.replace("/");
+    }
+
+    if (
+      isAutheticated &&
+      (systemRole == "SUPER_ADMIN" || systemRole == "ADMIN")
+    ) {
+      router.replace("/dashboard");
     }
   }, [session, router]);
 
