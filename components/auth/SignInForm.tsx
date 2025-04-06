@@ -88,7 +88,7 @@ export function SignInForm() {
           className="flex flex-col gap-4"
         >
           <section className="mb-2 text-center md:text-start">
-            <Link href="/" className="flex items-center gap-2 font-medium">
+            <Link href="/" className="flex items-center gap-2 font-semibold">
               <div className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-md">
                 <GalleryVerticalEnd className="size-4" />
               </div>

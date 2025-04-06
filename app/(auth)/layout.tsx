@@ -12,32 +12,14 @@ export default async function AuthLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main>
+    <div>
       <div>{children}</div>
       <Toaster
         position="bottom-center"
         toastOptions={{
           duration: 4000,
-          style: {
-            background: "#333",
-            color: "#fff",
-            borderRadius: "8px",
-          },
-          success: {
-            icon: "✅",
-            style: {
-              background: "#22c55e",
-              color: "white",
-            },
-          },
-          error: {
-            style: {
-              background: "#ef4444",
-              color: "white",
-            },
-          },
         }}
       />
-    </main>
+    </div>
   );
 }
