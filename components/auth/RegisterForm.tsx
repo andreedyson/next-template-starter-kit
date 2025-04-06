@@ -19,6 +19,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { customToast } from "../CustomToast";
 import {
   Form,
   FormControl,
@@ -27,7 +28,6 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import toast from "react-hot-toast";
 
 export function RegisterForm() {
   const [submitting, setSubmitting] = useState<boolean>(false);
@@ -78,22 +78,20 @@ export function RegisterForm() {
 
       const data = await res.json();
 
-      console.log(data);
-
       if (!res.ok) {
         setSubmitting(false);
 
-        toast.error(data.message);
+        customToast("error", "Something went wrong 😵", data.message);
       } else {
         setSubmitting(false);
-        toast.success(data.message);
+        customToast("success", "Success 🌟", data.message);
         form.reset();
         router.push("/sign-in");
       }
     } catch (error) {
       console.error("Registration error:", error);
       setSubmitting(false);
-      toast.error("Unexpected error occurred 😵");
+      customToast("error", "Unexpected error occured 😵");
     }
   }
 
@@ -192,7 +190,11 @@ export function RegisterForm() {
               </FormItem>
             )}
           />
-          <Button type="submit" disabled={submitting} className="mt-2 w-full">
+          <Button
+            type="submit"
+            disabled={submitting}
+            className="mt-2 w-full cursor-pointer"
+          >
             {submitting ? "Registering..." : "Register"}
           </Button>
           <Link href={"/sign-in"} className="mt-2 text-center text-sm">

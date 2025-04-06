@@ -21,6 +21,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import Image from "next/image";
+import { customToast } from "../CustomToast";
 
 export function SignInForm() {
   const [submitting, setSubmitting] = useState<boolean>(false);
@@ -64,11 +65,11 @@ export function SignInForm() {
 
       if (!res?.ok) {
         setSubmitting(false);
-        toast.error("Invalid credentials provided 🚫");
+        customToast("error", "Invalid credentials provided");
         setSubmitting(false);
       } else {
         setSubmitting(false);
-        toast.success("Login Successful 🌟");
+        customToast("success", "Login Successful");
         router.refresh();
         router.replace("/dashboard");
       }
@@ -152,7 +153,11 @@ export function SignInForm() {
             )}
           />
 
-          <Button type="submit" disabled={submitting} className="mt-2 w-full">
+          <Button
+            type="submit"
+            disabled={submitting}
+            className="mt-2 w-full cursor-pointer"
+          >
             {submitting ? "Signing In..." : "Sign In"}
           </Button>
 
