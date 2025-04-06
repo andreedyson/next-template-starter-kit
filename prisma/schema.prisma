@@ -23,14 +23,4 @@ model User {
   image     String?
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
-  Session   Session[]
-}
-
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

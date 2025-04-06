@@ -7,8 +7,8 @@ import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions: NextAuthOptions = {
   session: {
-    strategy: "database",
-    maxAge: 30 * 24 * 60 * 60,
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // Max age of 30 days
     updateAge: 24 * 60 * 60,
   },
   providers: [
@@ -77,7 +77,7 @@ export const authOptions: NextAuthOptions = {
         session.user.id = token.id;
         session.user.name = token.name;
         session.user.email = token.email;
-        session.user.image = token.image as string;
+        session.user.image = token.image;
         session.user.createdAt = token.createdAt;
         session.user.role = token.role;
       }
