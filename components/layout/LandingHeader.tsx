@@ -33,7 +33,7 @@ function LandingHeader() {
       </div>
 
       <div className="flex items-center gap-3">
-        <div className="flex flex-col items-center gap-4 text-sm font-medium lg:flex-row lg:text-base">
+        <div className="flex items-center gap-4 text-sm font-medium lg:text-base">
           <Link
             href={"/sign-in"}
             className="duration-200 hover:text-slate-800 hover:underline"

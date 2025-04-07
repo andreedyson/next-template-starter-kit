@@ -2,6 +2,7 @@ import AuthProvider from "@/auth-provider";
 import LandingHeader from "@/components/layout/LandingHeader";
 import type { Metadata } from "next";
 import "../globals.css";
+import MobileHeader from "@/components/layout/MobileHeader";
 
 export const metadata: Metadata = {
   title: "Next.js Template",
@@ -21,6 +22,7 @@ export default function LandingLayout({
     >
       <AuthProvider>
         <LandingHeader />
+        <MobileHeader />
         <div className="my-4 max-md:mx-4">{children}</div>
       </AuthProvider>
     </div>

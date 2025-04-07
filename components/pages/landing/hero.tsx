@@ -9,9 +9,11 @@ function HeroSection() {
       <div className="flex flex-col items-center gap-3">
         {/* Hero Title & Description */}
         <div className="flex flex-col items-center justify-center gap-1.5 text-center md:gap-3">
-          <div className="flex items-center gap-1.5 rounded-full border px-5 py-2 shadow-lg">
+          <div className="flex items-center gap-1.5 rounded-full border px-4 py-1.5 shadow-lg max-md:mb-3 md:px-5 md:py-2">
             <SquareKanban size={14} strokeWidth={2} />
-            <p className="text-sm font-semibold">Build Modern Web App Faster</p>
+            <p className="text-xs font-semibold md:text-sm">
+              Build Modern Web App Faster
+            </p>
           </div>
           <h1 className="text-2xl font-bold max-md:leading-none md:text-3xl lg:text-5xl">
             Unlock Your Next.js Potential: <br /> Ready-to-Go Template

@@ -1,5 +1,4 @@
-import HeroSection from "@/components/pages/landing/hero";
-import React from "react";
+import HeroSection from "@/components/pages/landing/Hero";
 
 function LandingPage() {
   return (
