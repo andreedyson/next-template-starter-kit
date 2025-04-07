@@ -19,7 +19,7 @@ function FeatureSection() {
           {FEATURES_SECTION.map((feature, i) => (
             <div
               key={i}
-              className="flex items-center gap-2 rounded-lg border px-3 py-4 shadow-lg"
+              className="flex items-center gap-2 rounded-lg border border-violet-600 px-3 py-4 shadow-[5px_5px_0px_0px_rgba(109,40,217)]"
             >
               <p className="rounded-full bg-slate-200 p-1.5 text-base lg:p-3 lg:text-lg">
                 {feature.icon}
