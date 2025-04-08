@@ -30,9 +30,14 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+const faqVariants = {
+  hidden: { opacity: 0, x: 40 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+const faqImageVariants = {
+  hidden: { opacity: 0, x: 40 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 const headerVariants = {
@@ -71,7 +76,7 @@ function FAQSection() {
             className="grid grid-cols-1 gap-3"
           >
             {FAQ_LISTS.map((faq, i) => (
-              <motion.div key={i} variants={cardVariants}>
+              <motion.div key={i} variants={faqVariants}>
                 <Accordion type="multiple">
                   <AccordionItem value={i.toString()}>
                     <AccordionTrigger>{faq.question}</AccordionTrigger>
@@ -83,9 +88,15 @@ function FAQSection() {
           </motion.div>
 
           {/* FAQ Image */}
-          <div className="bg-background relative flex size-full items-center justify-center overflow-hidden rounded-lg max-md:hidden">
+          <motion.div
+            variants={faqImageVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            className="bg-background relative flex size-full items-center justify-center overflow-hidden rounded-lg max-md:hidden"
+          >
             <IconCloud images={icons} />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

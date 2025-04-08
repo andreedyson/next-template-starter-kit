@@ -5,6 +5,7 @@ import { SquareKanban } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -80,9 +81,14 @@ function HeroSection() {
             className="mt-3 flex items-center gap-4"
           >
             <Button className="w-[120px] md:w-[150px]">Get Started</Button>
-            <Button className="w-[120px] md:w-[150px]" variant={"link"}>
-              View on GitHub
-            </Button>
+            <Link
+              href={"https://github.com/andreedyson/next-template-andre"}
+              target="_blank"
+            >
+              <Button className="w-[120px] md:w-[150px]" variant={"link"}>
+                View on GitHub
+              </Button>
+            </Link>
           </motion.div>
         </div>
 
