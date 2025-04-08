@@ -5,6 +5,7 @@ function FeatureSection() {
   return (
     <section className="my-20">
       <div className="flex flex-col items-center justify-center gap-4">
+        {/* Feature Header */}
         <div className="space-y-2 text-center">
           <h2 className="text-xl font-bold max-md:leading-none md:text-2xl lg:text-3xl">
             Packed with <span className="text-shadow-violet-600">Powerful</span>{" "}
@@ -15,6 +16,8 @@ function FeatureSection() {
             develop web app faster using the best web development technology.
           </p>
         </div>
+
+        {/* Feature Cards */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {FEATURES_SECTION.map((feature, i) => (
             <div
