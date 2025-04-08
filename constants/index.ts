@@ -112,3 +112,36 @@ export const TECH_STACKS = [
     docs: "https://motion.dev/docs/react-quick-start",
   },
 ];
+
+export const FAQ_LISTS = [
+  {
+    question: "What is Startdash and who is it for?",
+    answer:
+      "Startdash is a Next.js starter template built for developers who want to ship fullstack apps fast. It's perfect for indie hackers, students, and product teams who want scalable structure without spending hours on boilerplate setup.",
+  },
+  {
+    question: "Can I use this template for production apps?",
+    answer:
+      "Yes! Startdash uses production-ready technologies like Prisma, NextAuth, and PostgreSQL. With proper environment variables and security practices in place, you can deploy right away.",
+  },
+  {
+    question: "How is authentication handled in Startdash?",
+    answer:
+      "Authentication is powered by NextAuth.js. You can use OAuth providers like GitHub, or add email/password credentials with role-based session control.",
+  },
+  {
+    question: "Can I customize the layout and components?",
+    answer:
+      "Definitely. The layout uses modular file structures and shadcn/ui components, which makes customization easy and scalable.",
+  },
+  {
+    question: "Is the database setup ready to use?",
+    answer:
+      "Yes. Startdash is pre-configured with Prisma ORM and connected to a PostgreSQL database (via Supabase or your own). You can start modeling your schemas right away in prisma schema.",
+  },
+  {
+    question: "How do I deploy this template?",
+    answer:
+      "You can deploy using Vercel, as it integrates seamlessly with Next.js. Just make sure you set your environment variables correctly on your deployment dashboard.",
+  },
+];

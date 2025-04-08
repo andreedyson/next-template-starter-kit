@@ -1,3 +1,4 @@
+import FAQSection from "@/components/pages/landing/faq-section";
 import FeatureSection from "@/components/pages/landing/feature-section";
 import HeroSection from "@/components/pages/landing/hero-section";
 import TechStacksSection from "@/components/pages/landing/tech-stacks-section";
@@ -8,6 +9,7 @@ function LandingPage() {
       <HeroSection />
       <FeatureSection />
       <TechStacksSection />
+      <FAQSection />
     </div>
   );
 }

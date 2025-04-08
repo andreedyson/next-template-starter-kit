@@ -1,7 +1,6 @@
 "use client";
 
 import { FEATURES_SECTION } from "@/constants";
-import React from "react";
 import { motion } from "framer-motion";
 
 const containerVariants = {
@@ -25,7 +24,7 @@ const headerVariants = {
 
 function FeatureSection() {
   return (
-    <section className="my-20">
+    <section className="py-20">
       <div className="flex flex-col items-center justify-center gap-4">
         {/* Feature Header */}
         <motion.div

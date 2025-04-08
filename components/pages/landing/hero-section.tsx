@@ -30,7 +30,7 @@ const imageVariant = {
 
 function HeroSection() {
   return (
-    <section className="my-20 w-full">
+    <section className="w-full py-20">
       <div className="flex flex-col items-center gap-3">
         {/* Hero Title & Description */}
         <div className="flex flex-col items-center justify-center gap-1.5 text-center md:gap-3">
@@ -90,7 +90,7 @@ function HeroSection() {
         <motion.div
           variants={imageVariant}
           initial="hidden"
-          whileInView="show"
+          animate="show"
           viewport={{ once: true, amount: 0.3 }}
           className="flex w-[80%] items-center justify-center lg:w-full"
         >

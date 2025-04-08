@@ -34,7 +34,7 @@ const MotionLink = motion(Link);
 
 function TechStacksSection() {
   return (
-    <section className="my-20">
+    <section className="py-20">
       <div className="flex flex-col items-center justify-center gap-4">
         {/* Tech Stack Header */}
         <motion.div
