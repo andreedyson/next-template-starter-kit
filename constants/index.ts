@@ -13,6 +13,10 @@ export const LANDING_PAGE_LINKS = [
     title: "Tech Stacks",
     url: "#tech-stacks",
   },
+  {
+    title: "FAQ",
+    url: "#faq",
+  },
 ];
 
 export const FEATURES_SECTION = [

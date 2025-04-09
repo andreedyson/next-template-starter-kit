@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sans.className} antialiased`}>
+      <body className={`${sans.className}`}>
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
