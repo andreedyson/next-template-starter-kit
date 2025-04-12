@@ -6,8 +6,8 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: {
     // Add metadata to each page with a title to use this page title template
-    template: "%s | StartDash",
-    default: "StartDash",
+    template: "%s | Dashboard",
+    default: "Dashboard",
   },
   description:
     "Next.js starter kit template that help developer to kickstart their development journey.",
