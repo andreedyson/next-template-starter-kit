@@ -1,10 +1,28 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Aperture, ExternalLink } from "lucide-react";
 import React from "react";
+import { motion } from "framer-motion";
+
+const imageVariant = {
+  hidden: { opacity: 0, scale: 0.95 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { delay: 0.6, duration: 0.6, ease: "easeOut" },
+  },
+};
 
 function LandingBanner() {
   return (
-    <section className="py-20">
+    <motion.section
+      variants={imageVariant}
+      initial="hidden"
+      animate="show"
+      viewport={{ once: true, amount: 0.3 }}
+      className="py-20"
+    >
       <div>
         <div className="relative rounded-lg border bg-gradient-to-r from-violet-600 to-indigo-600 p-8 text-white">
           <div>
@@ -37,7 +55,7 @@ function LandingBanner() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

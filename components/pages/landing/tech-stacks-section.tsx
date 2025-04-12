@@ -30,7 +30,7 @@ const containerVariants = {
 };
 
 // Motion-enhanced Link
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 function TechStacksSection() {
   return (
