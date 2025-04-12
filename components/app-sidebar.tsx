@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Home, Settings2, User } from "lucide-react";
+import { Check, Home, LogOut, Settings2, User } from "lucide-react";
 
 import {
   Sidebar,
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 // Menu items.
 const items = [
@@ -83,6 +84,13 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+        <div
+          onClick={() => signOut({ redirect: true })}
+          className="mt-auto flex cursor-pointer items-center justify-center gap-2 p-4 text-sm font-semibold text-red-500 duration-200 hover:bg-slate-200"
+        >
+          <LogOut size={20} />
+          Logout
+        </div>
       </SidebarContent>
     </Sidebar>
   );
