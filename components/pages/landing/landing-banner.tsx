@@ -19,7 +19,7 @@ function LandingBanner() {
     <motion.section
       variants={imageVariant}
       initial="hidden"
-      animate="show"
+      whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       className="py-20"
     >
@@ -50,7 +50,7 @@ function LandingBanner() {
             </div>
           </div>
 
-          <div className="absolute -right-16 -bottom-12 hidden rotate-90 md:block">
+          <div className="absolute -right-16 -bottom-12 hidden rotate-90 overflow-hidden md:block">
             <Aperture size={400} />
           </div>
         </div>
