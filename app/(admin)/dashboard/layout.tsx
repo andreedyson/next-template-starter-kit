@@ -1,4 +1,5 @@
 import { AppSidebar } from "@/components/app-sidebar";
+import AdminHeader from "@/components/layout/admin-header";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Metadata } from "next";
 
@@ -21,6 +22,7 @@ export default async function AdminLayout({
     <SidebarProvider>
       <AppSidebar />
       <main className={`w-full antialiased`}>
+        <AdminHeader />
         <div className="m-4">{children}</div>
       </main>
     </SidebarProvider>
