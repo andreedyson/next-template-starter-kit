@@ -1,8 +1,8 @@
 import AuthProvider from "@/auth-provider";
-import LandingHeader from "@/components/layout/LandingHeader";
+import LandingHeader from "@/components/layout/landing-header";
 import type { Metadata } from "next";
 import "../globals.css";
-import MobileHeader from "@/components/layout/MobileHeader";
+import MobileHeader from "@/components/layout/mobile-header";
 import Footer from "@/components/layout/footer";
 
 export const metadata: Metadata = {
