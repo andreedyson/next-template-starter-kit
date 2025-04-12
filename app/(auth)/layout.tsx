@@ -3,7 +3,7 @@ import "../globals.css";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
-  title: "TechDome",
+  title: "StartDash",
 };
 
 export default async function AuthLayout({

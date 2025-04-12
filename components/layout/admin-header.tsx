@@ -3,6 +3,7 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "../theme-toggle";
+import UserAvatar from "../user-avatar";
 
 function AdminHeader() {
   const pathname = usePathname();
@@ -17,7 +18,10 @@ function AdminHeader() {
         <SidebarTrigger />
         <h2 className="font-bold capitalize">{pageName}</h2>
       </div>
-      <ThemeToggle />
+      <div className="flex items-center gap-2">
+        <ThemeToggle />
+        <UserAvatar fullname="Andre" role="SUPER_ADMIN" />
+      </div>
     </header>
   );
 }

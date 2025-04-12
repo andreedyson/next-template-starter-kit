@@ -19,7 +19,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { customToast } from "../CustomToast";
+import { customToast } from "../custom-toast";
 import {
   Form,
   FormControl,

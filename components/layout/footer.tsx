@@ -25,7 +25,7 @@ function Footer() {
             <p>📞 Phone: +62 812-1212-1313</p>
           </div>
         </div>
-        {/* Tech Dome Navigations */}
+        {/* Start Dash Navigations */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <div className="space-y-2">
             <h4 className="text-base font-bold">Navigation</h4>

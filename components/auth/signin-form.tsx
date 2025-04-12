@@ -21,7 +21,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import Image from "next/image";
-import { customToast } from "../CustomToast";
+import { customToast } from "../custom-toast";
 
 export function SignInForm() {
   const [submitting, setSubmitting] = useState<boolean>(false);

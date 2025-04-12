@@ -16,6 +16,8 @@ export async function middleware(req: NextRequest) {
       secret: process.env.NEXTAUTH_SECRET,
     });
 
+    console.log(token);
+
     // If no token found, user is unauthorized
     if (!token) {
       // For API routes, return JSON response
