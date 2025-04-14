@@ -2,14 +2,16 @@
 
 import { LANDING_PAGE_LINKS } from "@/constants";
 import { cn } from "@/lib/utils";
-import { AlignJustify, X } from "lucide-react";
+import { AlignJustify, LoaderCircle, X } from "lucide-react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Button } from "../ui/button";
+import UserAvatar from "../user-avatar";
 
 function MobileHeader() {
   const [openNav, setOpenNav] = useState<boolean>(false);
+  const session = useSession();
   const pathname = usePathname();
   const pagename = "/" + pathname.split("/")[1];
 
@@ -46,14 +48,23 @@ function MobileHeader() {
           </div>
         </div>
 
-        <Button className="rounded-full px-5">
-          <Link
-            href={"/sign-in"}
-            className="duration-200 hover:text-slate-800 hover:underline md:text-base"
-          >
-            Sign In
-          </Link>
-        </Button>
+        {/* User Avatar & Sign In */}
+        {session.status === "unauthenticated" ? (
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4 text-sm font-medium lg:text-base">
+              <Link
+                href={"/sign-in"}
+                className="duration-200 hover:text-slate-800 hover:underline"
+              >
+                Sign In
+              </Link>
+            </div>
+          </div>
+        ) : session.status === "loading" ? (
+          <LoaderCircle className="size-10 animate-spin" />
+        ) : (
+          <UserAvatar fullname="Andre Edyson" role="SUPER_ADMIN" />
+        )}
 
         <div
           className={`bg-background dark:bg-background absolute top-[60px] flex h-[92vh] w-full flex-col border p-4 duration-200 ${openNav ? "left-0" : "-left-[1000px]"}`}
