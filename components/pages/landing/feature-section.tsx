@@ -7,7 +7,7 @@ const containerVariants = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.2,
     },
   },
 };
@@ -24,7 +24,7 @@ const headerVariants = {
 
 function FeatureSection() {
   return (
-    <section className="py-20">
+    <section className="py-32">
       <div className="flex flex-col items-center justify-center gap-4">
         {/* Feature Header */}
         <motion.div

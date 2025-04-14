@@ -47,7 +47,7 @@ const headerVariants = {
 
 function FAQSection() {
   return (
-    <section className="py-20">
+    <section className="py-32">
       <div className="flex flex-col gap-4">
         {/* FAQ Header */}
         <motion.div

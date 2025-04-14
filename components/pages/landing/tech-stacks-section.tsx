@@ -13,7 +13,7 @@ const fadeUp = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.1,
+      delay: i * 0.2,
       duration: 0.5,
       ease: "easeOut",
     },
@@ -24,7 +24,7 @@ const containerVariants = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.3,
     },
   },
 };
@@ -34,7 +34,7 @@ const MotionLink = motion.create(Link);
 
 function TechStacksSection() {
   return (
-    <section className="py-20">
+    <section className="py-32">
       <div className="flex flex-col items-center justify-center gap-4">
         {/* Tech Stack Header */}
         <motion.div
