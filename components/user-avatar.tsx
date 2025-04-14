@@ -21,13 +21,29 @@ type UserAvatarProps = {
   fullname: string;
   role: "SUPER_ADMIN" | "ADMIN" | "USER";
 };
+
 function UserAvatar({ fullname, role }: UserAvatarProps) {
   const pathname = usePathname();
-  const userInitial =
-    fullname.split(" ").length > 1
-      ? fullname.split(" ")[0].charAt(0) + fullname.split(" ")[1].charAt(0)
-      : fullname.charAt(0);
+  const nameParts = fullname.trim().split(" ");
+  const userInitial = nameParts
+    .slice(0, 2)
+    .map((name) => name.charAt(0).toUpperCase())
+    .join("");
+
   const isUserAdmin = role === "ADMIN" || role === "SUPER_ADMIN";
+
+  const isOnDashboard = pathname.includes("/dashboard");
+  const linkHref = isUserAdmin
+    ? isOnDashboard
+      ? "/"
+      : "/dashboard"
+    : "/profile";
+
+  const linkLabel = isUserAdmin
+    ? isOnDashboard
+      ? "Main Page"
+      : "Dashboard"
+    : "Profile";
 
   return (
     <DropdownMenu>
@@ -46,7 +62,9 @@ function UserAvatar({ fullname, role }: UserAvatarProps) {
           <div className="flex flex-col space-y-1 text-right">
             <p className="text-sm leading-none font-semibold">{fullname}</p>
             <p
-              className={`"text-sm text-muted-foreground" leading-none font-medium ${isUserAdmin ? "text-red-500" : "text-slate-400"}`}
+              className={`text-sm leading-none font-medium ${
+                isUserAdmin ? "text-red-500" : "text-slate-400"
+              }`}
             >
               {isUserAdmin ? "Admin" : "User"}
             </p>
@@ -54,28 +72,13 @@ function UserAvatar({ fullname, role }: UserAvatarProps) {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <Link
-              href={
-                isUserAdmin && !pathname.includes("/dashboard")
-                  ? "/dashboard"
-                  : isUserAdmin && pathname.includes("/dashboard")
-                    ? "/"
-                    : "/profile"
-              }
-              className="w-full"
-            >
-              {isUserAdmin && !pathname.includes("/dashboard")
-                ? "Dashboard"
-                : isUserAdmin && pathname.includes("/dashboard")
-                  ? "Main Page"
-                  : "Profile"}
+          <DropdownMenuItem asChild>
+            <Link href={linkHref} className="w-full">
+              {linkLabel}
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem
-            onClick={() => {
-              signOut({ redirect: true });
-            }}
+            onClick={() => signOut({ redirect: true })}
             className="cursor-pointer font-semibold text-red-500"
           >
             Log out
