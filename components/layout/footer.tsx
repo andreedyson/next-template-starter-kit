@@ -1,3 +1,9 @@
+/**
+ * ⚠️ Footer
+ * This component is a footer for the landing layout.
+ * You can customize the styling of it depending on the application you are building.
+ */
+
 import { LANDING_PAGE_LINKS } from "@/constants";
 import Link from "next/link";
 

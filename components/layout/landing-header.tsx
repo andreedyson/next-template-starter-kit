@@ -1,3 +1,9 @@
+/**
+ * ⚠️ Dummy Landing Header
+ * This is a static header used in the landing page layout.
+ * You can customize logo, nav links, session logic, or replace it entirely.
+ */
+
 "use client";
 
 import { LANDING_PAGE_LINKS } from "@/constants";

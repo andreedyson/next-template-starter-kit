@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * ⚠️ This page is a dummy template.
  * Feel free to customize the layout, content, and logic
@@ -7,6 +5,7 @@
  *
  * Remove the use client and other client side stuff to make this a server component
  */
+"use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useEffect, useState } from "react";

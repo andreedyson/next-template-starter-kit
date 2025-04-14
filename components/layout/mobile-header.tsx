@@ -1,3 +1,9 @@
+/**
+ * ⚠️ Dummy Mobile Header
+ * This component handles mobile nav toggling for the landing layout.
+ * You can customize the logic, styling, or integrate with a CMS/menu config.
+ */
+
 "use client";
 
 import { LANDING_PAGE_LINKS } from "@/constants";

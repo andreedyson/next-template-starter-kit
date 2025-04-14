@@ -1,3 +1,8 @@
+/**
+ * ⚠️ Dummy Admin Header
+ * This is a static admin header used in the dashboard page layout.
+ */
+
 "use client";
 
 import { SidebarTrigger } from "@/components/ui/sidebar";
