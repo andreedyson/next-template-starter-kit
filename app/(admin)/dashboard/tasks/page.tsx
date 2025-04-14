@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   title: "Tasks",
 };
 
+/**
+ * ⚠️ This page is a dummy template.
+ * Feel free to customize the layout, content, and logic
+ * according to your actual project needs.
+ */
+
 function TasksPage() {
   const tasks = [
     { id: 1, title: "Fix login bug", done: true },

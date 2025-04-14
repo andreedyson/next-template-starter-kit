@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: "Settings",
 };
 
+/**
+ * ⚠️ This page is a dummy template.
+ * Feel free to customize the layout, content, and logic
+ * according to your actual project needs.
+ */
+
 function SettingsPage() {
   return (
     <Card className="max-w-xl">

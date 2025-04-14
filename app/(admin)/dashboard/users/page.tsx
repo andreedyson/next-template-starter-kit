@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   title: "Users",
 };
 
+/**
+ * ⚠️ This page is a dummy template.
+ * Feel free to customize the layout, content, and logic
+ * according to your actual project needs.
+ */
+
 function UsersPage() {
   return (
     <Card>

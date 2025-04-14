@@ -1,5 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+/**
+ * ⚠️ This page is a dummy template.
+ * Feel free to customize the layout, content, and logic
+ * according to your actual project needs.
+ */
+
 function DashboardPage() {
   return (
     <div className="space-y-6">
