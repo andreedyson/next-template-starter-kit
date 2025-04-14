@@ -5,6 +5,7 @@ import { Check, Home, LogOut, Settings2, User } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -84,13 +85,21 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-        <div
-          onClick={() => signOut({ redirect: true })}
-          className="mt-auto flex cursor-pointer items-center justify-center gap-2 p-4 text-sm font-semibold text-red-500 duration-200 hover:bg-slate-200"
-        >
-          <LogOut size={20} />
-          Logout
-        </div>
+        <SidebarFooter className="mt-auto">
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                className="my-3 flex cursor-pointer items-center justify-center gap-2 font-semibold text-red-500 duration-200 hover:bg-red-200"
+                onClick={() => {
+                  signOut({ redirect: true });
+                }}
+              >
+                <LogOut size={20} />
+                <span>Logout</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarFooter>
       </SidebarContent>
     </Sidebar>
   );
