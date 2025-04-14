@@ -13,13 +13,13 @@ import TechStacksSection from "@/components/pages/landing/tech-stacks-section";
 
 function LandingPage() {
   return (
-    <div>
+    <>
       <HeroSection />
       <FeatureSection />
       <TechStacksSection />
       <FAQSection />
       <LandingBanner />
-    </div>
+    </>
   );
 }
 

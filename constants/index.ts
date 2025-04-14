@@ -1,5 +1,7 @@
+// DO NOT REMOVE (used for API routes and other baseUrl related stuff)
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
+// Customize the Landing Page Links, using section id or a new page / routes
 export const LANDING_PAGE_LINKS = [
   {
     title: "Home",
@@ -19,6 +21,10 @@ export const LANDING_PAGE_LINKS = [
   },
 ];
 
+/**
+ * Feel free to remove the variables below and customize the layout, content,
+ * and logic according to your actual project needs.
+ */
 export const FEATURES_SECTION = [
   {
     icon: "🧩",
