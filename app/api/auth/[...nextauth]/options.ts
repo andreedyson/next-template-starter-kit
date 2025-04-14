@@ -105,7 +105,7 @@ export const authOptions: NextAuthOptions = {
       };
     },
     async redirect({ baseUrl }) {
-      return `${baseUrl}/sign-in`;
+      return `${baseUrl}`;
     },
   },
   pages: {

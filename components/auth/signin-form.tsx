@@ -70,8 +70,8 @@ export function SignInForm() {
       } else {
         setSubmitting(false);
         customToast("success", "Login Successful");
-        console.log(res.url);
         router.refresh();
+        router.push("/");
       }
     } catch (error) {
       console.error("Registration error:", error);
