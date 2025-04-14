@@ -1,5 +1,6 @@
 import { AppSidebar } from "@/components/app-sidebar";
 import AdminHeader from "@/components/layout/admin-header";
+import ReactQueryProvider from "@/components/providers/react-query-provider";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Metadata } from "next";
 
@@ -19,12 +20,15 @@ export default async function AdminLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <main className={`w-full antialiased`}>
-        <AdminHeader />
-        <div className="m-4">{children}</div>
-      </main>
-    </SidebarProvider>
+    // ⚠️ Wraps the dashboard with React Query so all pages inside can use hooks like `useQuery`
+    <ReactQueryProvider>
+      <SidebarProvider>
+        <AppSidebar />
+        <main className={`w-full antialiased`}>
+          <AdminHeader />
+          <div className="m-4">{children}</div>
+        </main>
+      </SidebarProvider>
+    </ReactQueryProvider>
   );
 }
