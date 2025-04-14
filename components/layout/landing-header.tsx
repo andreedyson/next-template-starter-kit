@@ -1,14 +1,18 @@
 "use client";
 
 import { LANDING_PAGE_LINKS } from "@/constants";
-import { GalleryVerticalEnd } from "lucide-react";
+import { GalleryVerticalEnd, LoaderCircle } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { Button } from "../ui/button";
+import { useSession } from "next-auth/react";
+import UserAvatar from "../user-avatar";
 
 function LandingHeader() {
   const pathname = usePathname();
+  const session = useSession();
+
   return (
     <header className="bg-background z-[99] hidden items-center justify-between border p-6 shadow-md max-md:px-4 md:flex md:px-[80px] lg:px-[144px]">
       {/* Logo */}
@@ -32,19 +36,26 @@ function LandingHeader() {
         ))}
       </div>
 
-      <div className="flex items-center gap-3">
-        <div className="flex items-center gap-4 text-sm font-medium lg:text-base">
-          <Link
-            href={"/sign-in"}
-            className="duration-200 hover:text-slate-800 hover:underline"
-          >
-            Sign In
-          </Link>
-          <Link href={"/register"}>
-            <Button className="font-medium">Register</Button>
-          </Link>
+      {/* User Avatar & Sign In */}
+      {session.status === "unauthenticated" ? (
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4 text-sm font-medium lg:text-base">
+            <Link
+              href={"/sign-in"}
+              className="duration-200 hover:text-slate-800 hover:underline"
+            >
+              Sign In
+            </Link>
+            <Link href={"/register"}>
+              <Button className="font-medium">Register</Button>
+            </Link>
+          </div>
         </div>
-      </div>
+      ) : session.status === "loading" ? (
+        <LoaderCircle className="size-10 animate-spin" />
+      ) : (
+        <UserAvatar fullname="Andre Edyson" role="SUPER_ADMIN" />
+      )}
     </header>
   );
 }
