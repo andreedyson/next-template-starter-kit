@@ -8,7 +8,7 @@
 
 import { LANDING_PAGE_LINKS } from "@/constants";
 import { cn } from "@/lib/utils";
-import { AlignJustify, LoaderCircle, X } from "lucide-react";
+import { AlignJustify, X } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -66,8 +66,6 @@ function MobileHeader() {
               </Link>
             </div>
           </div>
-        ) : session.status === "loading" ? (
-          <LoaderCircle className="size-10 animate-spin" />
         ) : (
           <UserAvatar fullname="Andre Edyson" role="SUPER_ADMIN" />
         )}

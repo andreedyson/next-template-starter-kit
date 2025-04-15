@@ -7,12 +7,11 @@
 "use client";
 
 import { LANDING_PAGE_LINKS } from "@/constants";
-import { GalleryVerticalEnd, LoaderCircle } from "lucide-react";
+import { GalleryVerticalEnd } from "lucide-react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 import { Button } from "../ui/button";
-import { useSession } from "next-auth/react";
 import UserAvatar from "../user-avatar";
 
 function LandingHeader() {
@@ -57,8 +56,6 @@ function LandingHeader() {
             </Link>
           </div>
         </div>
-      ) : session.status === "loading" ? (
-        <LoaderCircle className="size-10 animate-spin" />
       ) : (
         <UserAvatar fullname="Andre Edyson" role="SUPER_ADMIN" />
       )}
