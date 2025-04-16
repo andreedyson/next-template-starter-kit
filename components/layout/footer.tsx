@@ -77,7 +77,9 @@ function Footer() {
           </div>
         </div>
       </div>
-      <p className="mt-5 text-sm">© 2025 Start Dash. All Rights Reserved.</p>
+      <p className="mt-5 text-sm">
+        © {new Date().getFullYear()} Start Dash. All Rights Reserved.
+      </p>
     </footer>
   );
 }
