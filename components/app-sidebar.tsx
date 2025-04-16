@@ -18,7 +18,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 
-// Menu items.
+// Menu items. Change according to the needs of your applications
 const items = [
   {
     title: "Home",

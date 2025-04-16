@@ -1,10 +1,15 @@
 import AuthProvider from "@/auth-provider";
-import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
-import "./globals.css";
 import { ThemeProvider } from "@/components/theme-providers";
+import type { Metadata } from "next";
+import { Outfit } from "next/font/google";
+import "./globals.css";
 
-const sans = Plus_Jakarta_Sans({
+/**
+ * ⚠️ Application Font
+ * Replace this fonts variable with your preferred
+ * font that will be applied towards the whole application.
+ */
+const sans = Outfit({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
