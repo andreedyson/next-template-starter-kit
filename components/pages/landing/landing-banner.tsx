@@ -24,7 +24,7 @@ function LandingBanner() {
       className="py-20"
     >
       <div>
-        <div className="relative rounded-lg border bg-gradient-to-r from-violet-600 to-indigo-600 p-8 text-white">
+        <div className="relative overflow-hidden rounded-lg border bg-gradient-to-r from-violet-600 to-indigo-600 p-8 text-white">
           <div>
             <div className="space-y-1.5">
               <h3 className="text-2xl font-bold md:text-3xl lg:text-4xl">
@@ -50,7 +50,7 @@ function LandingBanner() {
             </div>
           </div>
 
-          <div className="absolute -right-16 -bottom-12 hidden rotate-90 overflow-hidden md:block">
+          <div className="absolute -right-16 -bottom-12 hidden rotate-90 md:block md:overflow-hidden">
             <Aperture size={400} />
           </div>
         </div>

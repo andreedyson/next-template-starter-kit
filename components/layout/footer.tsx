@@ -9,7 +9,7 @@ import Link from "next/link";
 
 function Footer() {
   return (
-    <footer className="text-primary-foreground mt-12 flex flex-col justify-between bg-slate-800 px-4 py-10 max-sm:items-center md:px-[80px] lg:px-[144px] 2xl:mx-auto">
+    <footer className="text-primary-foreground dark:text-foreground mt-12 flex flex-col justify-between bg-slate-800 px-4 py-10 max-sm:items-center md:px-[80px] lg:px-[144px] 2xl:mx-auto">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         {/* Start Dash Logo & Contacts */}
         <div>
