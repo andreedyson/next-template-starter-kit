@@ -67,7 +67,11 @@ function MobileHeader() {
             </div>
           </div>
         ) : (
-          <UserAvatar fullname="Andre Edyson" role="SUPER_ADMIN" />
+          <UserAvatar
+            fullname="Andre Edyson"
+            role="SUPER_ADMIN"
+            email="andre@mail.com"
+          />
         )}
 
         <div

@@ -25,7 +25,11 @@ function AdminHeader() {
       </div>
       <div className="flex items-center gap-2">
         <ThemeToggle />
-        <UserAvatar fullname="Andre" role="SUPER_ADMIN" />
+        <UserAvatar
+          fullname="Andre"
+          role="SUPER_ADMIN"
+          email={"andre@mail.com"}
+        />
       </div>
     </header>
   );

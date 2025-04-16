@@ -26,9 +26,10 @@ import { usePathname } from "next/navigation";
 type UserAvatarProps = {
   fullname: string;
   role: "SUPER_ADMIN" | "ADMIN" | "USER";
+  email: string;
 };
 
-function UserAvatar({ fullname, role }: UserAvatarProps) {
+function UserAvatar({ fullname, role, email }: UserAvatarProps) {
   const pathname = usePathname();
   const nameParts = fullname.trim().split(" ");
   const userInitial = nameParts
@@ -77,6 +78,9 @@ function UserAvatar({ fullname, role }: UserAvatarProps) {
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1 text-right">
             <p className="text-sm leading-none font-semibold">{fullname}</p>
+            <p className="text-muted-foreground text-sm leading-none font-medium">
+              {email}
+            </p>
             <p
               className={`text-sm leading-none font-medium ${
                 isUserAdmin ? "text-red-500" : "text-slate-400"
