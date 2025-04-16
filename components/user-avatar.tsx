@@ -12,7 +12,13 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOutIcon } from "lucide-react";
+import {
+  ChartBarStacked,
+  House,
+  LogOutIcon,
+  Settings2,
+  User,
+} from "lucide-react";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -45,6 +51,16 @@ function UserAvatar({ fullname, role }: UserAvatarProps) {
       : "Dashboard"
     : "Profile";
 
+  const linkIcon = isUserAdmin ? (
+    isOnDashboard ? (
+      <House />
+    ) : (
+      <ChartBarStacked />
+    )
+  ) : (
+    <User />
+  );
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -70,13 +86,24 @@ function UserAvatar({ fullname, role }: UserAvatarProps) {
             </p>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator />
+
         <DropdownMenuGroup>
-          <DropdownMenuItem asChild>
-            <Link href={linkHref} className="w-full">
+          <DropdownMenuItem asChild className="cursor-pointer">
+            <Link href={linkHref} className="flex w-full items-center gap-2">
+              {linkIcon}
               {linkLabel}
             </Link>
           </DropdownMenuItem>
+          <DropdownMenuItem asChild className="cursor-pointer">
+            <Link
+              href={"/dashboard/settings"}
+              className="flex w-full items-center gap-2"
+            >
+              <Settings2 />
+              Settings
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
           <DropdownMenuItem
             onClick={() => signOut({ redirect: true })}
             className="cursor-pointer font-semibold text-red-500"
