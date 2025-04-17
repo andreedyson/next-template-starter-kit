@@ -59,9 +59,10 @@ This project comes pre-configured with:
 To set up the `StartDash` template locally, follow these steps:
 
 1. **Clone the repository**:
-    ```bash
-   git clone https://github.com/andreedyson/next-template-andre.git
-   cd next-template-andre
+```bash
+git clone https://github.com/andreedyson/next-template-andre.git
+cd next-template-andre
+```
 
 2. **Install dependencies**:
 ```bash
