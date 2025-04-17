@@ -14,6 +14,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import UserAvatar from "../user-avatar";
+import { ThemeToggle } from "../theme-toggle";
 
 function MobileHeader() {
   const [openNav, setOpenNav] = useState<boolean>(false);
@@ -55,24 +56,27 @@ function MobileHeader() {
         </div>
 
         {/* User Avatar & Sign In */}
-        {session.status === "unauthenticated" ? (
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-4 text-sm font-medium lg:text-base">
-              <Link
-                href={"/sign-in"}
-                className="duration-200 hover:text-slate-800 hover:underline"
-              >
-                Sign In
-              </Link>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          {session.status === "unauthenticated" ? (
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4 text-sm font-medium lg:text-base">
+                <Link
+                  href={"/sign-in"}
+                  className="duration-200 hover:text-slate-800 hover:underline"
+                >
+                  Sign In
+                </Link>
+              </div>
             </div>
-          </div>
-        ) : (
-          <UserAvatar
-            fullname="Andre Edyson"
-            role="SUPER_ADMIN"
-            email="andre@mail.com"
-          />
-        )}
+          ) : (
+            <UserAvatar
+              fullname="Andre Edyson"
+              role="SUPER_ADMIN"
+              email="andre@mail.com"
+            />
+          )}
+        </div>
 
         <div
           className={`bg-background dark:bg-background absolute top-[60px] flex h-[92vh] w-full flex-col border p-4 duration-200 ${openNav ? "left-0" : "-left-[1000px]"}`}
