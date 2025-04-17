@@ -24,7 +24,7 @@ const headerVariants = {
 
 function FeatureSection() {
   return (
-    <section id="features" className="py-32">
+    <section id="features" className="section-padding">
       <div className="flex flex-col items-center justify-center gap-4">
         {/* Feature Header */}
         <motion.div
