@@ -73,6 +73,8 @@ npm install
 Create a .env file in the root directory with the required environment variables. Include your PostgreSQL database credentials, NextAuth configuration (e.g., secret, providers), and any other necessary variables. Copy the example environment config and update values:
 ```bash
 cp .env.example .env.local
+# OR
+cp .env.example .env
 ```
 
 ```env
@@ -117,7 +119,7 @@ npm run dev
 ```
 
 6. **Access the template**:
-Open http://localhost:3000 to view the app.
+Open http://localhost:3000 to view the app. Remove the boilerplate comment / unused components depending on your needs.
 ## <a name="structure">🏛️ Project Structure</a>
 
 ```bash
