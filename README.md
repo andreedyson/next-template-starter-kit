@@ -108,8 +108,8 @@ GOOGLE_SECRET="your-google-client-secret"
 4. **Migrate the database**:
 Initialize your PostgreSQL database schema with Prisma:
 ```bash
-npx prisma generate
 npx prisma migrate dev --name init
+npx prisma generate
 ```
 Ensure your PostgreSQL (or Supabase) DB is up and running.
 
