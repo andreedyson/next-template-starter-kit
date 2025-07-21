@@ -20,7 +20,7 @@ function LandingHeader() {
   const session = useSession();
 
   return (
-    <header className="bg-background sticky top-0 hidden items-center justify-between border p-6 shadow-md max-md:px-4 md:flex md:px-[80px] lg:px-[144px]">
+    <header className="bg-background sticky top-0 z-[999] hidden items-center justify-between border p-6 shadow-md max-md:px-4 md:flex md:px-[80px] lg:px-[144px]">
       {/* Logo */}
       <Link href="/" className="flex items-center gap-2 font-semibold">
         <div className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-md">
@@ -46,7 +46,7 @@ function LandingHeader() {
       <div className="flex items-center gap-2">
         <ThemeToggle />
         {session.status === "unauthenticated" ? (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 max-md:hidden">
             <div className="flex items-center gap-4 text-sm font-medium lg:text-base">
               <Link
                 href={"/sign-in"}

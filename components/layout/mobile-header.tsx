@@ -59,7 +59,7 @@ function MobileHeader() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           {session.status === "unauthenticated" ? (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 max-md:hidden">
               <div className="flex items-center gap-4 text-sm font-medium lg:text-base">
                 <Link
                   href={"/sign-in"}
