@@ -21,7 +21,7 @@ function LandingBanner() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      className="py-20"
+      className="py-20 2xl:px-[144px]"
     >
       <div>
         <div className="relative overflow-hidden rounded-lg border bg-gradient-to-r from-violet-600 to-indigo-600 p-8 text-white">
