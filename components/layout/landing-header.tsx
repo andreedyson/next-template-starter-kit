@@ -20,7 +20,7 @@ function LandingHeader() {
   const session = useSession();
 
   return (
-    <header className="bg-background sticky top-0 z-[999] hidden items-center justify-between border p-6 shadow-md max-md:px-4 md:flex md:px-[80px] lg:px-[144px]">
+    <header className="bg-background sticky top-0 z-[999] hidden max-w-[1920px] items-center justify-between border p-6 antialiased shadow-md max-md:px-4 md:flex md:px-[80px] lg:px-[144px] 2xl:mx-auto">
       {/* Logo */}
       <Link href="/" className="flex items-center gap-2 font-semibold">
         <div className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-md">
