@@ -82,7 +82,7 @@ function HeroSection() {
           >
             <Button className="w-[120px] md:w-[150px]">Get Started</Button>
             <Link
-              href={"https://github.com/andreedyson/next-template-andre"}
+              href={"https://github.com/andreedyson/next-template-starter-kit"}
               target="_blank"
             >
               <Button className="w-[120px] md:w-[150px]" variant={"link"}>
