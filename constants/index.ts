@@ -1,5 +1,6 @@
 // DO NOT REMOVE (used for API routes and other baseUrl related stuff)
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // Customize the Landing Page Links, using section id or a new page / routes
 export const LANDING_PAGE_LINKS = [
