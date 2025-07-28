@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme-providers";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import { generateMetadata } from "@/lib/seo";
 
 /**
  * ⚠️ Application Font
@@ -14,10 +15,7 @@ const sans = Outfit({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = {
-  title: "Next.js Template",
-  description: "Next.js boilerplate for website project.",
-};
+export const metadata: Metadata = generateMetadata();
 
 export default function RootLayout({
   children,

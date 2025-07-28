@@ -1,5 +1,10 @@
 import { RegisterForm } from "@/components/auth/register-form";
+import { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Register an account",
+};
 
 export default function RegisterPage() {
   return (
