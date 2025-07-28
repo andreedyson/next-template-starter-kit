@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Aperture, ExternalLink } from "lucide-react";
 import React from "react";
 import { motion } from "framer-motion";
+import config from "@/config";
 
 const imageVariant = {
   hidden: { opacity: 0, scale: 0.95 },
@@ -33,7 +34,7 @@ function LandingBanner() {
               </h3>
               <p className="text-sm text-slate-200 md:max-w-sm md:text-base">
                 Don&apos;t wait any longer, start your indie programming journey
-                now faster with StartDash
+                now faster with {config.appName}
               </p>
             </div>
 

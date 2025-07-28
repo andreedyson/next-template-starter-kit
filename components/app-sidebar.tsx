@@ -17,6 +17,7 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
+import config from "@/config";
 
 // Menu items. Change according to the needs of your applications
 const items = [
@@ -57,7 +58,7 @@ export function AppSidebar() {
                   SD
                 </div>
                 <div className="leading-none">
-                  <span className="font-semibold italic">Start Dash</span>
+                  <span className="font-semibold italic">{config.appName}</span>
                 </div>
               </Link>
             </SidebarMenuButton>

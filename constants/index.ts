@@ -1,3 +1,5 @@
+import config from "@/config";
+
 // DO NOT REMOVE (used for API routes and other baseUrl related stuff)
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -126,17 +128,15 @@ export const TECH_STACKS = [
 
 export const FAQ_LISTS = [
   {
-    question: "What is Startdash and who is it for?",
-    answer:
-      "Startdash is a Next.js starter template built for developers who want to ship fullstack apps fast. It's perfect for indie hackers, students, and product teams who want scalable structure without spending hours on boilerplate setup.",
+    question: `What is ${config.appName} and who is it for?`,
+    answer: `${config.appName} is a Next.js starter template built for developers who want to ship fullstack apps fast. It's perfect for indie hackers, students, and product teams who want scalable structure without spending hours on boilerplate setup.`,
   },
   {
     question: "Can I use this template for production apps?",
-    answer:
-      "Yes! Startdash uses production-ready technologies like Prisma, NextAuth, and PostgreSQL. With proper environment variables and security practices in place, you can deploy right away.",
+    answer: `Yes! ${config.appName} uses production-ready technologies like Prisma, NextAuth, and PostgreSQL. With proper environment variables and security practices in place, you can deploy right away.`,
   },
   {
-    question: "How is authentication handled in Startdash?",
+    question: `How is authentication handled in ${config.appName}?`,
     answer:
       "Authentication is powered by NextAuth.js. You can use OAuth providers like GitHub, or add email/password credentials with role-based session control.",
   },
@@ -147,8 +147,7 @@ export const FAQ_LISTS = [
   },
   {
     question: "Is the database setup ready to use?",
-    answer:
-      "Yes. Startdash is pre-configured with Prisma ORM and connected to a PostgreSQL database (via Supabase or your own). You can start modeling your schemas right away in prisma schema.",
+    answer: `"Yes. ${config.appName} is pre-configured with Prisma ORM and connected to a PostgreSQL database (via Supabase or your own). You can start modeling your schemas right away in prisma schema.`,
   },
   {
     question: "How do I deploy this template?",

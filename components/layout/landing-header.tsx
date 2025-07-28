@@ -6,14 +6,16 @@
 
 "use client";
 
+import config from "@/config";
 import { LANDING_PAGE_LINKS } from "@/constants";
 import { GalleryVerticalEnd } from "lucide-react";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "../theme-toggle";
 import { Button } from "../ui/button";
 import UserAvatar from "../user-avatar";
-import { ThemeToggle } from "../theme-toggle";
 
 function LandingHeader() {
   const pathname = usePathname();
@@ -22,11 +24,28 @@ function LandingHeader() {
   return (
     <header className="bg-background sticky top-0 z-[999] hidden max-w-[1920px] items-center justify-between border p-6 antialiased shadow-md max-md:px-4 md:flex md:px-[80px] lg:px-[144px] 2xl:mx-auto">
       {/* Logo */}
-      <Link href="/" className="flex items-center gap-2 font-semibold">
-        <div className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-md">
-          <GalleryVerticalEnd className="size-4" />
-        </div>
-        StartDash
+      <Link
+        href="/"
+        className="flex items-center gap-2 font-semibold"
+        title={`${config.appName} Homepage`}
+      >
+        {config.appLogo ? (
+          <div>
+            <Image
+              src={config.appLogo}
+              alt={`${config.appName} Logo`}
+              className="w-8"
+              priority={true}
+              width={32}
+              height={32}
+            />
+          </div>
+        ) : (
+          <div className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-md">
+            <GalleryVerticalEnd className="size-4" />
+          </div>
+        )}
+        {config.appName}
       </Link>
 
       {/* Landing Page Links */}

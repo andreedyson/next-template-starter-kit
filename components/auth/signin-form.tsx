@@ -22,6 +22,7 @@ import {
 } from "../ui/form";
 import Image from "next/image";
 import { customToast } from "../custom-toast";
+import config from "@/config";
 
 export function SignInForm() {
   const [submitting, setSubmitting] = useState<boolean>(false);
@@ -88,11 +89,28 @@ export function SignInForm() {
           className="flex flex-col gap-4"
         >
           <section className="mb-2 text-center md:text-start">
-            <Link href="/" className="flex items-center gap-2 font-semibold">
-              <div className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-md">
-                <GalleryVerticalEnd className="size-4" />
-              </div>
-              StartDash
+            <Link
+              href="/"
+              className="flex items-center gap-2 font-semibold"
+              title={`${config.appName} Homepage`}
+            >
+              {config.appLogo ? (
+                <div>
+                  <Image
+                    src={config.appLogo}
+                    alt={`${config.appName} Logo`}
+                    className="w-8"
+                    priority={true}
+                    width={32}
+                    height={32}
+                  />
+                </div>
+              ) : (
+                <div className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-md">
+                  <GalleryVerticalEnd className="size-4" />
+                </div>
+              )}
+              {config.appName}
             </Link>
             <p className="mt-2.5 mb-3 text-sm font-bold tracking-wide uppercase">
               Sign In
@@ -193,7 +211,7 @@ export function SignInForm() {
             </span>
           </Link>
           <div className="mt-3 text-center text-sm md:mt-10 md:text-start">
-            <p>© 2025 StartDash</p>
+            <p>© 2025 {config.appName}</p>
           </div>
         </form>
       </Form>

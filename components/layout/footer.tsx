@@ -4,6 +4,7 @@
  * You can customize the styling of it depending on the application you are building.
  */
 
+import config from "@/config";
 import { LANDING_PAGE_LINKS } from "@/constants";
 import Link from "next/link";
 
@@ -11,7 +12,7 @@ function Footer() {
   return (
     <footer className="text-primary-foreground dark:text-foreground mt-12 flex max-w-[1920px] flex-col justify-between bg-slate-800 px-4 py-10 max-sm:items-center md:px-[80px] lg:px-[144px] 2xl:mx-auto">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        {/* Start Dash Logo & Contacts */}
+        {/* App Logo & Contacts */}
         <div>
           <Link
             href="/"
@@ -20,18 +21,18 @@ function Footer() {
             <div className="bg-primary flex size-8 items-center justify-center rounded-md font-bold">
               SD
             </div>
-            <span>Start Dash</span>
+            <span>{config.appName}</span>
           </Link>
           <p className="mt-2 max-w-[380px] text-sm text-slate-300">
             Kickstart your tech platform with this Next.js template. Build and
             ship application faster with our code.
           </p>
           <div className="mt-4 space-y-1 text-sm">
-            <p>📧 Email: support@startdash.com</p>
+            <p>📧 Email: support@{config.appName.toLowerCase()}.com</p>
             <p>📞 Phone: +62 812-1212-1313</p>
           </div>
         </div>
-        {/* Start Dash Navigations */}
+        {/* App Navigations */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <div className="space-y-2">
             <h4 className="text-base font-bold">Navigation</h4>
@@ -78,7 +79,7 @@ function Footer() {
         </div>
       </div>
       <p className="mt-5 text-sm">
-        © {new Date().getFullYear()} Start Dash. All Rights Reserved.
+        © {new Date().getFullYear()} {config.appName}. All Rights Reserved.
       </p>
     </footer>
   );

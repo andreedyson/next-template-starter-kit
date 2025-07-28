@@ -28,6 +28,8 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
+import Image from "next/image";
+import config from "@/config";
 
 export function RegisterForm() {
   const [submitting, setSubmitting] = useState<boolean>(false);
@@ -105,12 +107,26 @@ export function RegisterForm() {
           <section className="mb-2 text-center md:text-start">
             <Link
               href="/"
-              className="mb-3 flex items-center gap-2 font-semibold"
+              className="flex items-center gap-2 font-semibold"
+              title={`${config.appName} Homepage`}
             >
-              <div className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-md">
-                <GalleryVerticalEnd className="size-4" />
-              </div>
-              StartDash
+              {config.appLogo ? (
+                <div>
+                  <Image
+                    src={config.appLogo}
+                    alt={`${config.appName} Logo`}
+                    className="w-8"
+                    priority={true}
+                    width={32}
+                    height={32}
+                  />
+                </div>
+              ) : (
+                <div className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-md">
+                  <GalleryVerticalEnd className="size-4" />
+                </div>
+              )}
+              {config.appName}
             </Link>
             <p className="mt-2.5 mb-3 text-sm font-bold tracking-wide uppercase">
               Register
@@ -207,7 +223,7 @@ export function RegisterForm() {
             </span>
           </Link>
           <div className="desc-2 mt-3 text-center text-sm md:mt-12 md:text-start">
-            <p>© 2025 StartDash</p>
+            <p>© 2025 {config.appName}</p>
           </div>
         </form>
       </Form>

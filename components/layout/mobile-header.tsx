@@ -15,6 +15,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import UserAvatar from "../user-avatar";
 import { ThemeToggle } from "../theme-toggle";
+import config from "@/config";
 
 function MobileHeader() {
   const [openNav, setOpenNav] = useState<boolean>(false);
@@ -50,7 +51,7 @@ function MobileHeader() {
               {openNav ? <X size={24} /> : <AlignJustify size={24} />}
             </div>
             <div className="text-main-violet-500 text-xl font-bold">
-              Start Dash
+              {config.appName}
             </div>
           </div>
         </div>

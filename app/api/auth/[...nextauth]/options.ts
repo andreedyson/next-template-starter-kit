@@ -4,6 +4,7 @@
  * You can freely customize the provider setup, session behavior, and callback logic as needed.
  */
 
+import config from "@/config";
 import prisma from "@/lib/db";
 import bcrypt from "bcrypt";
 import { NextAuthOptions } from "next-auth";
@@ -134,7 +135,7 @@ export const authOptions: NextAuthOptions = {
 
   // 🌐 Override default sign-in page
   pages: {
-    signIn: "/sign-in",
+    signIn: config.signInUrl,
   },
 
   // 🔐 NextAuth secret
