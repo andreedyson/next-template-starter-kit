@@ -32,7 +32,7 @@ This project comes pre-configured with:
 ## <a name="features">✨ Features</a>
 
 - **⚫ Dark Mode Support** - Full support for dark/light themes using Tailwind and `theme-provider`.
-- **📱 Responsive Design** - obile-first layout and components that adapt to any screen size.
+- **📱 Responsive Design** - mobile-first layout and components that adapt to any screen size.
 - **🔐 Role-Based Auth** - NextAuth setup with support for roles (admin/user) and protected routes.
 - **🧩 UI with shadcn/ui** - Pre-styled, accessible components ready to use and extend.
 - **🧱 Modular Architecture** - Route groups for landing, auth, and dashboard sections using App Router.
