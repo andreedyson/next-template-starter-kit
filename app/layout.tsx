@@ -1,4 +1,4 @@
-import { ThemeProvider } from "@/components/theme-providers";
+import { ThemeProvider } from "@/components/providers/theme-providers";
 import { generateMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
