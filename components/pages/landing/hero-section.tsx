@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SquareKanban } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-import { motion } from "framer-motion";
+import { easeOut, motion } from "framer-motion";
 import Link from "next/link";
 
 const fadeUp = {
@@ -15,7 +15,7 @@ const fadeUp = {
     transition: {
       delay: i * 0.15,
       duration: 0.6,
-      ease: "easeOut",
+      ease: easeOut,
     },
   }),
 };
@@ -25,7 +25,7 @@ const imageVariant = {
   show: {
     opacity: 1,
     scale: 1,
-    transition: { delay: 0.6, duration: 0.6, ease: "easeOut" },
+    transition: { delay: 0.6, duration: 0.6, ease: easeOut },
   },
 };
 

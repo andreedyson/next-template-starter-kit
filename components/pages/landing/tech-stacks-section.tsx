@@ -4,7 +4,7 @@ import { TECH_STACKS } from "@/constants";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { easeOut, motion } from "framer-motion";
 
 // Reusable animations
 const fadeUp = {
@@ -15,7 +15,7 @@ const fadeUp = {
     transition: {
       delay: i * 0.2,
       duration: 0.5,
-      ease: "easeOut",
+      ease: easeOut,
     },
   }),
 };

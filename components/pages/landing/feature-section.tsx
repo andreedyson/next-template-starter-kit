@@ -1,7 +1,7 @@
 "use client";
 
 import { FEATURES_SECTION } from "@/constants";
-import { motion } from "framer-motion";
+import { easeOut, motion } from "framer-motion";
 
 const containerVariants = {
   hidden: {},
@@ -14,12 +14,12 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: easeOut } },
 };
 
 const headerVariants = {
   hidden: { opacity: 0, y: -20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
 };
 
 function FeatureSection() {

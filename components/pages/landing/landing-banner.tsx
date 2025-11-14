@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Aperture, ExternalLink } from "lucide-react";
 import React from "react";
-import { motion } from "framer-motion";
+import { easeOut, motion } from "framer-motion";
 import config from "@/config";
 
 const imageVariant = {
@@ -11,7 +11,7 @@ const imageVariant = {
   show: {
     opacity: 1,
     scale: 1,
-    transition: { delay: 0.6, duration: 0.6, ease: "easeOut" },
+    transition: { delay: 0.6, duration: 0.6, ease: easeOut },
   },
 };
 
@@ -22,10 +22,10 @@ function LandingBanner() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      className="py-20 2xl:px-[144px]"
+      className="py-20 2xl:px-36"
     >
       <div>
-        <div className="relative overflow-hidden rounded-lg border bg-gradient-to-r from-violet-600 to-indigo-600 p-8 text-white">
+        <div className="relative overflow-hidden rounded-lg border bg-linear-to-r from-violet-600 to-indigo-600 p-8 text-white">
           <div>
             <div className="space-y-1.5">
               <h3 className="text-2xl font-bold md:text-3xl lg:text-4xl">

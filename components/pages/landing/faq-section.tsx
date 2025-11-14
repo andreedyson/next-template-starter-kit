@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { FAQ_LISTS } from "@/constants";
-import { motion } from "framer-motion";
+import { easeOut, motion } from "framer-motion";
 
 const icons = [
   "/assets/logo/nextjs.svg",
@@ -32,17 +32,17 @@ const containerVariants = {
 
 const faqVariants = {
   hidden: { opacity: 0, x: 40 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: easeOut } },
 };
 
 const faqImageVariants = {
   hidden: { opacity: 0, x: 40 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: easeOut } },
 };
 
 const headerVariants = {
   hidden: { opacity: 0, y: -20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
 };
 
 function FAQSection() {

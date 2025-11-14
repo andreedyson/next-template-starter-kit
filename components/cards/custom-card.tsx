@@ -40,7 +40,7 @@ export function CustomCard({
         <div className="flex flex-col gap-2 sm:flex-row md:items-center">
           {IconComp && (
             <div className="grid aspect-square size-10 place-items-center rounded-md bg-slate-200 md:size-12 dark:bg-slate-700">
-              <IconComp className="text-muted-foreground size-5" />
+              <IconComp className="text-foreground size-5" />
             </div>
           )}
 
