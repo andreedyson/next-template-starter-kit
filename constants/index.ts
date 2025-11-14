@@ -4,6 +4,8 @@ import config from "@/config";
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
+export const DEFAULT_KEY = "userSesison";
+
 // Customize the Landing Page Links, using section id or a new page / routes
 export const LANDING_PAGE_LINKS = [
   {

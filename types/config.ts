@@ -5,4 +5,5 @@ export type AppConfig = {
   appLogo?: string;
   gitHubRepo?: string;
   signInUrl?: string;
+  baseAPIUrl?: string;
 };

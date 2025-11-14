@@ -13,8 +13,8 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import UserAvatar from "../user-avatar";
-import { ThemeToggle } from "../theme-toggle";
+import UserAvatar from "../shared/user-avatar";
+import { ThemeToggle } from "../shared/theme-toggle";
 import config from "@/config";
 
 function MobileHeader() {

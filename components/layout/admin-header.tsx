@@ -7,8 +7,8 @@
 
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { usePathname } from "next/navigation";
-import { ThemeToggle } from "../theme-toggle";
-import UserAvatar from "../user-avatar";
+import { ThemeToggle } from "../shared/theme-toggle";
+import UserAvatar from "../shared/user-avatar";
 
 function AdminHeader() {
   const pathname = usePathname();

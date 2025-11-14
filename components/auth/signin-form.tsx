@@ -21,7 +21,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import Image from "next/image";
-import { customToast } from "../custom-toast";
+import { customToast } from "../shared/custom-toast";
 import config from "@/config";
 
 export function SignInForm() {
