@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  const cookie = req.cookies.get("profile")?.value;
+  const cookie = req.cookies.get("userSession")?.value;
 
   // Public Routes
   if (pathname === "/" || pathname.startsWith("/login")) {
