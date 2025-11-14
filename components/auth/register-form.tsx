@@ -1,19 +1,18 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import config from "@/config";
-import { apiToast } from "@/lib/axios";
-import { getProfileClient } from "@/lib/client/profile";
-import { registerSchema } from "@/types/validations";
+import { api, APIResponse } from "@/lib/axios";
+import { generateMetadata } from "@/lib/seo";
+import { registerSchema, TRegister } from "@/validations/auth-validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Eye,
   EyeOff,
   GalleryVerticalEnd,
+  LetterText,
   Lock,
   Mail,
-  UserRound,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,15 +20,15 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { FormInput } from "../forms/form-input";
+import BackButton from "../shared/back-button";
 import { customToast } from "../shared/custom-toast";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../ui/form";
+import { Form } from "../ui/form";
+import { getProfileClient } from "@/lib/client/profile";
+
+export const metadata = generateMetadata({
+  title: "Daftarkan akun",
+});
 
 export function RegisterForm() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -45,8 +44,6 @@ export function RegisterForm() {
     },
   });
 
-  const isFormSubmitting = form.formState.isSubmitting;
-
   useEffect(() => {
     const systemRole = session?.role;
 
@@ -59,10 +56,17 @@ export function RegisterForm() {
     }
   }, [session, router]);
 
-  async function onSubmit(values: z.infer<typeof registerSchema>) {
+  async function onSubmit(values: TRegister) {
     try {
-      await apiToast.post("/api/register", values);
-      customToast("success", "Account registered successfully");
+      await api.post<APIResponse<TRegister>>("/api/register", values);
+
+      customToast(
+        "success",
+        "Pendaftaran berhasil",
+        "Silahkan verifikasi akun anda melalui email terdaftar.",
+      );
+
+      router.push("/sign-in");
     } catch {}
   }
 
@@ -73,10 +77,11 @@ export function RegisterForm() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-4"
         >
-          <section className="mb-2 text-center md:text-start">
+          <BackButton className="justify-start" />
+          <section className="mb-2 flex flex-col items-center justify-center text-center">
             <Link
               href="/"
-              className="flex items-center gap-2 font-semibold"
+              className="jusce mb-2 flex items-center gap-2 font-semibold"
               title={`${config.appName} Homepage`}
             >
               {config.appLogo ? (
@@ -97,96 +102,50 @@ export function RegisterForm() {
               )}
               {config.appName}
             </Link>
-            <p className="mt-2.5 mb-3 text-sm font-bold tracking-wide uppercase">
-              Register
-            </p>
-            <h2 className="text-xl font-bold md:text-2xl">
-              Create an account 📦
-            </h2>
+            <h2 className="text-xl font-bold md:text-2xl">Daftarkan akun 💸</h2>
             <p className="text-muted-foreground text-sm md:text-base">
-              Fill out the form below to create your account and start managing
-              your dashboard with ease.
+              Silakan isi data berikut untuk membuat akun baru dan mulai
+              mengelola mengelola keuangan anda.
             </p>
           </section>
-          <FormField
+          {/* Nama */}
+          <FormInput
             control={form.control}
             name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <div className="border-input flex items-center justify-center rounded-md border dark:bg-zinc-700">
-                  <UserRound size={24} className="mx-2" />
-                  <FormControl>
-                    <Input
-                      placeholder="ex: Andre Edyson"
-                      {...field}
-                      autoComplete="off"
-                      className="rounded-l-none"
-                    />
-                  </FormControl>
-                </div>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Nama Lengkap"
+            prefixIcon={LetterText}
+            placeholder="Contoh: Dinan"
           />
-          <FormField
+          {/* Email */}
+          <FormInput
             control={form.control}
             name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <div className="border-input flex items-center justify-center rounded-md border dark:bg-zinc-700">
-                  <Mail size={24} className="mx-2" />
-                  <FormControl>
-                    <Input
-                      placeholder="user@mail.com"
-                      {...field}
-                      autoComplete="off"
-                      className="rounded-l-none"
-                    />
-                  </FormControl>
-                </div>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Email"
+            prefixIcon={Mail}
+            placeholder="nama@email.com"
           />
-          <FormField
+          {/* Password */}
+          <FormInput
             control={form.control}
             name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <div className="border-input relative flex items-center justify-center rounded-md border dark:bg-zinc-700">
-                  <Lock size={24} className="mx-2" />
-                  <FormControl>
-                    <Input
-                      placeholder={showPassword ? "Your Password" : "******"}
-                      {...field}
-                      autoComplete="off"
-                      type={showPassword ? "text" : "password"}
-                      className="rounded-l-none"
-                    />
-                  </FormControl>
-                  <div
-                    className="desc-2 absolute right-3 cursor-pointer"
-                    onClick={() => setShowPassword((prev) => !prev)}
-                  >
-                    {!showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
-                  </div>
-                </div>
-                <FormMessage />
-              </FormItem>
-            )}
+            label="Kata Sandi"
+            prefixIcon={Lock}
+            placeholder={showPassword ? "Minimal 8 karakter" : "******"}
+            type={showPassword ? "text" : "password"}
+            autoComplete="off"
+            suffixIcon={showPassword ? EyeOff : Eye}
+            onSuffixClick={() => setShowPassword((prev) => !prev)}
           />
+
           <Button
             type="submit"
-            disabled={isFormSubmitting}
+            disabled={form.formState.isSubmitting}
             className="mt-2 w-full cursor-pointer"
           >
-            {isFormSubmitting ? "Registering..." : "Register"}
+            {form.formState.isSubmitting ? "Memproses..." : "Daftar"}
           </Button>
           <Link href={"/sign-in"} className="mt-2 text-center text-sm">
-            Already have an account?{" "}
+            Sudah memiliki akun?{" "}
             <span className="text-main-500 font-semibold underline">
               Sign In
             </span>
