@@ -74,7 +74,7 @@ function UserAvatar({ fullname, role, email }: UserAvatarProps) {
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="z-[100] w-56" align="end" forceMount>
+      <DropdownMenuContent className="z-1000 w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1 text-right">
             <p className="text-sm leading-none font-semibold">{fullname}</p>

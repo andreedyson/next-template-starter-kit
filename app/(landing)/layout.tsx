@@ -1,4 +1,3 @@
-import AuthProvider from "@/auth-provider";
 import LandingHeader from "@/components/layout/landing-header";
 import type { Metadata } from "next";
 import "../globals.css";
@@ -17,13 +16,11 @@ export default function LandingLayout({
 }>) {
   return (
     <div>
-      <AuthProvider>
-        <LandingHeader />
-        <MobileHeader />
-        <div className="my-4 max-w-[1920px] antialiased max-md:mx-4 md:mx-[80px] lg:mx-[144px] 2xl:mx-auto">
-          {children}
-        </div>
-      </AuthProvider>
+      <LandingHeader />
+      <MobileHeader />
+      <div className="my-4 max-w-[1920px] antialiased max-md:mx-4 md:mx-20 lg:mx-36 2xl:mx-auto">
+        {children}
+      </div>
       <Footer />
     </div>
   );

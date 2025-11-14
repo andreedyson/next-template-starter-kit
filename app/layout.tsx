@@ -1,18 +1,18 @@
-import AuthProvider from "@/auth-provider";
 import { ThemeProvider } from "@/components/theme-providers";
+import { generateMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import { generateMetadata } from "@/lib/seo";
 
 /**
  * ⚠️ Application Font
  * Replace this fonts variable with your preferred
  * font that will be applied towards the whole application.
  */
-const sans = Outfit({
+const outfit = Outfit({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  variable: "--font-outfit",
 });
 
 export const metadata: Metadata = generateMetadata();
@@ -24,16 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${sans.className}`}>
-        <AuthProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem={false}
-          >
-            {children}
-          </ThemeProvider>
-        </AuthProvider>
+      <body className={`${outfit.variable}`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

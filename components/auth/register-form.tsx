@@ -2,7 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { BASE_URL } from "@/constants";
+import config from "@/config";
+import { apiToast } from "@/lib/axios";
+import { getProfileClient } from "@/lib/client/profile";
 import { registerSchema } from "@/types/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -13,7 +15,7 @@ import {
   Mail,
   UserRound,
 } from "lucide-react";
-import { useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -28,14 +30,11 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import Image from "next/image";
-import config from "@/config";
 
 export function RegisterForm() {
-  const [submitting, setSubmitting] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const router = useRouter();
-  const session = useSession();
+  const session = getProfileClient();
 
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
@@ -46,55 +45,25 @@ export function RegisterForm() {
     },
   });
 
-  useEffect(() => {
-    const isAutheticated = session.status === "authenticated";
-    const systemRole = session.data?.user.role;
+  const isFormSubmitting = form.formState.isSubmitting;
 
-    if (isAutheticated && systemRole == "USER") {
+  useEffect(() => {
+    const systemRole = session?.role;
+
+    if (session && systemRole == "USER") {
       router.replace("/");
     }
 
-    if (
-      isAutheticated &&
-      (systemRole == "SUPER_ADMIN" || systemRole == "ADMIN")
-    ) {
+    if (session && systemRole == "ADMIN") {
       router.replace("/dashboard");
     }
   }, [session, router]);
 
   async function onSubmit(values: z.infer<typeof registerSchema>) {
-    setSubmitting(true);
-
     try {
-      const res = await fetch(`${BASE_URL}/api/auth/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: values.name,
-          email: values.email,
-          password: values.password,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setSubmitting(false);
-
-        customToast("error", "Something went wrong 😵", data.message);
-      } else {
-        setSubmitting(false);
-        customToast("success", "Success 🌟", data.message);
-        form.reset();
-        router.push("/sign-in");
-      }
-    } catch (error) {
-      console.error("Registration error:", error);
-      setSubmitting(false);
-      customToast("error", "Unexpected error occured 😵");
-    }
+      await apiToast.post("/api/register", values);
+      customToast("success", "Account registered successfully");
+    } catch {}
   }
 
   return (
@@ -211,10 +180,10 @@ export function RegisterForm() {
           />
           <Button
             type="submit"
-            disabled={submitting}
+            disabled={isFormSubmitting}
             className="mt-2 w-full cursor-pointer"
           >
-            {submitting ? "Registering..." : "Register"}
+            {isFormSubmitting ? "Registering..." : "Register"}
           </Button>
           <Link href={"/sign-in"} className="mt-2 text-center text-sm">
             Already have an account?{" "}
