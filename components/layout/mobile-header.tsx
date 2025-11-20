@@ -6,20 +6,19 @@
 
 "use client";
 
+import config from "@/config";
 import { LANDING_PAGE_LINKS } from "@/constants";
 import { cn } from "@/lib/utils";
 import { AlignJustify, X } from "lucide-react";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import UserAvatar from "../shared/user-avatar";
 import { ThemeToggle } from "../shared/theme-toggle";
-import config from "@/config";
+import UserAvatar from "../shared/user-avatar";
 
 function MobileHeader() {
   const [openNav, setOpenNav] = useState<boolean>(false);
-  const session = useSession();
+  const session = false;
   const pathname = usePathname();
   const pagename = "/" + pathname.split("/")[1];
 
@@ -59,7 +58,7 @@ function MobileHeader() {
         {/* User Avatar & Sign In */}
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          {session.status === "unauthenticated" ? (
+          {session ? (
             <div className="flex items-center gap-3 max-md:hidden">
               <div className="flex items-center gap-4 text-sm font-medium lg:text-base">
                 <Link

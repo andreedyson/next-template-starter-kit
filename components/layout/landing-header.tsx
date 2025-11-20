@@ -9,17 +9,16 @@
 import config from "@/config";
 import { LANDING_PAGE_LINKS } from "@/constants";
 import { GalleryVerticalEnd } from "lucide-react";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "../shared/theme-toggle";
-import { Button } from "../ui/button";
 import UserAvatar from "../shared/user-avatar";
+import { Button } from "../ui/button";
 
 function LandingHeader() {
   const pathname = usePathname();
-  const session = useSession();
+  const session = false;
 
   return (
     <header className="bg-background sticky top-0 z-999 hidden max-w-[1920px] items-center justify-between border p-6 antialiased shadow-md max-md:px-4 md:flex md:px-20 lg:px-36 2xl:mx-auto">
@@ -64,7 +63,7 @@ function LandingHeader() {
       {/* User Avatar & Sign In */}
       <div className="flex items-center gap-2">
         <ThemeToggle />
-        {session.status === "unauthenticated" ? (
+        {session ? (
           <div className="flex items-center gap-3 max-md:hidden">
             <div className="flex items-center gap-4 text-sm font-medium lg:text-base">
               <Link
